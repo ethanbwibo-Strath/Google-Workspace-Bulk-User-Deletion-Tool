@@ -30,7 +30,7 @@ def main():
         service = build('admin', 'directory_v1', credentials=creds)
 
         # Path to your uploaded CSV file
-        csv_file_path = 'To Delete Test.csv'
+        csv_file_path = 'To Delete - 30 Jan.csv'
         
         with open(csv_file_path, mode='r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
