@@ -30,3 +30,50 @@ During my IT internship at Missions of Hope (MOHI) International, I was tasked w
    ```bash
    git clone [https://github.com/yourusername/User-Management.git](https://github.com/yourusername/User-Management.git)
    cd User-Management
+   ```
+
+2. **Set up the Virtual Environment:**
+   ```bash
+   python -m venv venv
+
+   # Windows
+   .\venv\Scripts\activate
+
+   # Mac/Linux
+   source venv/bin/activate
+   ```
+
+3. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Add Credentials:**
+   Place your `credentials.json` in the root directory.
+
+## 📖 Usage
+
+1. **Prepare your Data:**
+   - Ensure your CSV file is in the root directory.
+   - By default, the script looks for a column header named `Email Address [Required]`.
+   - **Customization Tip:** If your CSV uses a different header (e.g., "User Email"), simply open `delete_users.py` and change the key in the following line to match your column name:
+     ```python
+     email = row['Your_Column_Name_Here']
+     ```
+
+2. **Run the Script:**
+   ```bash
+   python delete_users.py
+   ```
+
+3. **Authentication:**
+   - A browser window will open automatically. Sign in with your authorized admin credentials.
+   - If prompted with "Google hasn't verified this app," click **Advanced** -> **Go to [Project Name] (unsafe)** to grant permissions.
+
+4. **Monitor Deletion:**
+   - The terminal will output the status of each deletion in real-time.
+
+
+
+## 🔒 Security Note
+This repository utilizes a `.gitignore` file to ensure that sensitive files such as `credentials.json`, `token.json`, and private CSV data are never uploaded to version control.
