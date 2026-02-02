@@ -1,4 +1,5 @@
 *.csv
+*.pdf
 venv/
 token.json
 credentials.json
