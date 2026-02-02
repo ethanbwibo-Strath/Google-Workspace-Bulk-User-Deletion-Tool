@@ -6,9 +6,11 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-# If modifying these scopes, delete the file token.json.
-# We need the 'user' scope to delete accounts
-SCOPES = ['https://www.googleapis.com/auth/admin.directory.user']
+SCOPES = [
+    'https://www.googleapis.com/auth/admin.directory.user',         # For Deletions
+    'https://www.googleapis.com/auth/admin.directory.group.member', # For Groups
+    'https://www.googleapis.com/auth/gmail.send'                    # For Onboarding Emails
+]
 
 def main():
     creds = None
@@ -30,7 +32,7 @@ def main():
         service = build('admin', 'directory_v1', credentials=creds)
 
         # Path to your uploaded CSV file
-        csv_file_path = 'To Delete - 31st Jan.csv'
+        csv_file_path = 'To Delete - 2nd Feb.csv'
         
         with open(csv_file_path, mode='r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
@@ -39,7 +41,7 @@ def main():
             
         # Edit below to match your CSV column name for email addresses
             for row in reader:
-                email = row['Email Address']
+                email = row['EMAIL']
                 try:
                     # The actual delete command
                     service.users().delete(userKey=email).execute()

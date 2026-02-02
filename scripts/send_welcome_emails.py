@@ -7,8 +7,11 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-# Scopes for Gmail Send
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+SCOPES = [
+    'https://www.googleapis.com/auth/admin.directory.user',         # For Deletions
+    'https://www.googleapis.com/auth/admin.directory.group.member', # For Groups
+    'https://www.googleapis.com/auth/gmail.send'                    # For Onboarding Emails
+]
 
 def main():
     creds = None
